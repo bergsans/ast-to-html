@@ -1,5 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { HTMLNode, astToHtml } from './ast-to-html';
+import astToHtml from './ast-to-html';
+import { HTMLNode } from '../typings';
 
 type ExpectedValue = string;
 

@@ -1,18 +1,4 @@
-type Attributes = Record<string, string>;
-
-type Tag = {
-    tag: string;
-    attributes?: Attributes;
-    children?: HTMLNode[];
-    closed?: true;
-};
-
-type TextContent = {
-    text: string;
-};
-
-type HTMLNode = Tag | TextContent;
-
+import { HTMLNode, Tag, TextContent } from '../typings';
 const isTag = (o: HTMLNode): o is Tag => 'tag' in o;
 
 const isTextContentTag = (o: HTMLNode): o is Tag & TextContent => 'text' in o;
@@ -35,7 +21,7 @@ const buildCloseTag = (o: Tag) => `</${o.tag}>`;
 const buildTag = (o: Tag, infix = '') =>
     o.closed ? buildOpenTag(o) : ''.concat(buildOpenTag(o), infix, buildCloseTag(o));
 
-function astToHtml(o: HTMLNode): string {
+export default function astToHtml(o: HTMLNode): string {
     if (isNodeList(o)) {
         return buildTag(o, o.children.reduce(buildList, ''));
     }
@@ -47,5 +33,3 @@ function astToHtml(o: HTMLNode): string {
     }
     return buildTag(o);
 }
-
-export { astToHtml, HTMLNode };
