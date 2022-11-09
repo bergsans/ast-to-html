@@ -28,6 +28,28 @@ describe('tokenize', () => {
             ],
         ],
         [
+            'div with nested p and test',
+            '<div id="mydiv"><p>Hello</p></div>',
+            [
+                { type: 'OPEN_TAG', literal: '<' },
+                { type: 'IDENTIFIER', literal: 'div' },
+                { type: 'IDENTIFIER', literal: 'id' },
+                { type: 'ASSIGN', literal: '=' },
+                { type: 'ATTRIBUTE_VALUE', literal: 'mydiv' },
+                { type: 'CLOSE_TAG', literal: '>' },
+                { type: 'OPEN_TAG', literal: '<' },
+                { type: 'IDENTIFIER', literal: 'p' },
+                { type: 'CLOSE_TAG', literal: '>' },
+                { type: 'Text', literal: 'Hello' },
+                { type: 'CLOSE_TAG_END', literal: '</' },
+                { type: 'IDENTIFIER', literal: 'p' },
+                { type: 'CLOSE_TAG', literal: '>' },
+                { type: 'CLOSE_TAG_END', literal: '</' },
+                { type: 'IDENTIFIER', literal: 'div' },
+                { type: 'CLOSE_TAG', literal: '>' },
+            ],
+        ],
+        [
             'p with attribute and span text',
             '<p style="color:green;" id="hello">One <span>child</span></p>',
             [

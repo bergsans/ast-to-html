@@ -68,6 +68,7 @@ export function produceIdentifier(
     const nextToken = read({ input, nextPosition, character }, 'name', isAlphabetic);
     nextPosition = nextToken.nextPosition as number;
     character = nextToken.character as keyof typeof characterNames;
+
     return {
         nextPosition,
         currentToken: newToken('IDENTIFIER', nextToken.name as string),

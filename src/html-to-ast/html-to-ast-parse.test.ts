@@ -6,17 +6,38 @@ import parse from './html-to-ast-parse';
 
 type Description = string;
 
-describe.only('parse tokens', () => {
+describe('parse tokens', () => {
     const testCases: [Description, Token[], HTMLNode][] = [
         [
             'p with attribute and text',
             tokenize('<p autoFocus="true">One child</p>'),
             {
                 tag: 'p',
+                children: [{ text: 'One child' }],
                 attributes: {
                     autoFocus: 'true',
                 },
-                children: [{ text: 'One child' }],
+            },
+        ],
+        [
+            'complex, nested div',
+            tokenize('<div id="mydiv"><div><p>Hello</p></div></div>'),
+            {
+                tag: 'div',
+                children: [
+                    {
+                        tag: 'div',
+                        children: [
+                            {
+                                tag: 'p',
+                                children: [{ text: 'Hello' }],
+                            },
+                        ],
+                    },
+                ],
+                attributes: {
+                    id: 'mydiv',
+                },
             },
         ],
     ];

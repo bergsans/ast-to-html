@@ -1,13 +1,13 @@
 {
-    "name": "ast-to-html",
+    "name": "html-2-ast-2-html",
     "version": "1.0.0",
-    "description": "",
+    "description": "html to ast and ast to html",
     "main": "index.js",
     "scripts": {
         "test": "jest"
     },
     "keywords": [],
-    "author": "Claes-Magnus Berg",
+    "author": "Claes-Magnus Berg <claes-magnus@bergsans.se>",
     "license": "ISC",
     "dependencies": {
         "@jest/globals": "^29.2.2",

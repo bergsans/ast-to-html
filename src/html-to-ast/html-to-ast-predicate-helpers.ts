@@ -1,4 +1,4 @@
-import { NUL, SPACE, TAB, RETURN, NEW_LINE, CLOSE_TAG, ASSIGN, OPEN_TAG } from './constants';
+import { SPACE, TAB, RETURN, NEW_LINE, CLOSE_TAG, ASSIGN, OPEN_TAG } from './constants';
 
 const isAngleBracket = (currentCharacter: string) =>
     [OPEN_TAG, CLOSE_TAG].includes(currentCharacter);
@@ -17,8 +17,8 @@ export const isWhitespace = (character: string) =>
 export const isAlphabetic = (character: string) =>
     character.toLowerCase() >= 'a' && character.toLowerCase() <= 'z';
 
-export const isText = (_: string, input: string, nextPosition: number) =>
-    input[nextPosition - 2] === CLOSE_TAG && input[nextPosition] !== NUL;
+export const isText = (char: string, input: string, nextPosition: number) =>
+    input[nextPosition - 2] === CLOSE_TAG && isAlphabetic(char);
 
 export const isQuoteChar = (character: string) => character === '"';
 
