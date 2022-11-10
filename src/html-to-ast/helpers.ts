@@ -14,7 +14,7 @@ export function list(_xs: Token[]): List<Token> {
     const xs = [..._xs];
     return {
         isHead: (type) => xs[0]?.type === type,
-        isPeakAt: (i, type) => xs[i].type === type,
+        isPeakAt: (i, type) => xs[i] && xs[i].type === type,
         peakAt: (i) => xs[i],
         length: () => xs.length,
         get: () => xs,

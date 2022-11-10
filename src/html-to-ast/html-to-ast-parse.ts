@@ -9,6 +9,7 @@ function parseTag(li: List<Token>): Tag {
     };
     let attributes = {};
     let children: HTMLNode[] = [];
+    let closed: null | true = null;
     while (
         !li.isHead('CLOSE_TAG_END') &&
         !li.isPeakAt(1, 'IDENTIFIER') &&
@@ -17,18 +18,27 @@ function parseTag(li: List<Token>): Tag {
         if (li.isHead('IDENTIFIER')) {
             attributes = parseAttributeValues(li) as Attributes;
         }
+        if (li.isHead('CLOSE_TAG_END')) {
+            closed = true;
+        }
         if (li.isHead('CLOSE_TAG')) {
             li.next();
             children = [...parseChildren(li)];
         }
     }
-    li.next();
-    li.next();
-    li.next();
-    tag.children = children;
+    if (children.length > 0) {
+        tag.children = children;
+    }
     if (Object.keys(attributes).length > 0) {
         tag.attributes = attributes;
     }
+    if (closed) {
+        tag.closed = closed;
+        return tag;
+    }
+    li.next();
+    li.next();
+    li.next();
     return tag;
 }
 
@@ -42,7 +52,7 @@ function parseChildren(li: List<Token>): HTMLNode[] {
 
 function parseAttributeValues(li: List<Token>): Attributes {
     const attributes: Record<string, string> = {};
-    while (!li.isHead('CLOSE_TAG')) {
+    while (!(li.isHead('CLOSE_TAG') || li.isHead('CLOSE_TAG_END'))) {
         const attribute = li.next();
         if (!li.isHead('ASSIGN') && !li.isPeakAt(1, 'ATTRIBUTE_VALUE')) {
             throw new Error('Expected assign.');

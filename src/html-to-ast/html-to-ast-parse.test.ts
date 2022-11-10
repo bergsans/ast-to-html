@@ -40,6 +40,17 @@ describe('parse tokens', () => {
                 },
             },
         ],
+        [
+            'Self-closed tag',
+            tokenize('<img src="hello.png" />'),
+            {
+                tag: 'img',
+                attributes: {
+                    src: 'hello.png',
+                },
+                closed: true,
+            },
+        ],
     ];
 
     for (const [description, testCase, expectedResult] of testCases) {

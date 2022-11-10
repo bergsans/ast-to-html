@@ -2,6 +2,7 @@ import { Token } from '../typings';
 import { NUL, CLOSE_TAG, OPEN_TAG, characterNames } from './constants';
 import {
     isSingleChar,
+    isSelfClosingTag,
     isWhitespace,
     isAlphabetic,
     isText,
@@ -75,6 +76,13 @@ export function produceIdentifier(
     };
 }
 
+export function produceSelfClosingTag(_input: string, nextPosition: number) {
+    return {
+        currentToken: newToken('CLOSE_TAG_END', '/>'),
+        nextPosition: nextPosition + 1,
+    };
+}
+
 export function produceClosingTag(
     input: string,
     nextPosition: number,
@@ -101,6 +109,7 @@ type Predicate = ((c: string) => boolean) | ((ch: string, inp: string, pos: numb
 type TokenHandler = [Predicate, Producer];
 
 const tokenHandlers: TokenHandler[] = [
+    [isSelfClosingTag, produceSelfClosingTag],
     [isClosingTag, produceClosingTag],
     [isText, produceText],
     [isAlphabetic, produceIdentifier],

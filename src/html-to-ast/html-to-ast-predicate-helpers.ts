@@ -24,3 +24,6 @@ export const isQuoteChar = (character: string) => character === '"';
 
 export const isClosingTag = (character: string, input: string, nextPosition: number) =>
     character === OPEN_TAG && input[nextPosition] === '/';
+
+export const isSelfClosingTag = (character: string, input: string, nextPosition: number) =>
+    character === '/' && input[nextPosition] === CLOSE_TAG;
