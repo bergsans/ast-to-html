@@ -1,7 +1,5 @@
-import { HTMLNode } from '../typings';
-import tokenize from './html-to-ast-tokenize';
-import parse from './html-to-ast-parse';
+import { HTMLNode, tokenize, parse } from '..';
 
-export default function htmlToAST(code: string): HTMLNode {
+export function htmlToAST(code: string): HTMLNode {
     return parse(tokenize(code));
 }

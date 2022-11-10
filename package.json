@@ -3,8 +3,12 @@
     "version": "1.0.0",
     "description": "html to ast and ast to html",
     "main": "index.js",
+    "files": [
+        "lib/**/*"
+    ],
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "build": "tsc"
     },
     "keywords": [],
     "author": "Claes-Magnus Berg <claes-magnus@bergsans.se>",

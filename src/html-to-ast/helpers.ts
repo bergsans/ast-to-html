@@ -1,4 +1,4 @@
-import { Token } from '../typings';
+import { Token } from '..';
 
 export type List<T> = {
     isHead: (s: string) => boolean;

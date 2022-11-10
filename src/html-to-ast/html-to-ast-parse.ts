@@ -1,4 +1,4 @@
-import { Tag, Attributes, Token, HTMLNode } from '../typings';
+import { Tag, Attributes, Token, HTMLNode } from '..';
 import { List, list } from './helpers';
 
 function parseTag(li: List<Token>): Tag {
@@ -79,7 +79,7 @@ function _parse(li: List<Token>) {
     }
 }
 
-export default function parse(tokens: Token[]): HTMLNode {
+export function parse(tokens: Token[]): HTMLNode {
     const li = list(tokens);
     return _parse(li) as HTMLNode;
 }

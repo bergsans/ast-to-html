@@ -1,4 +1,4 @@
-import { Token } from '../typings';
+import { Token } from '..';
 import { NUL, CLOSE_TAG, OPEN_TAG, characterNames } from './constants';
 import {
     isSingleChar,
@@ -181,7 +181,7 @@ function produceTokens(data: Data, tokens: Token[] = []): Token[] {
     return produceTokens(nextData, tokens.concat(nextData.currentToken as Token));
 }
 
-export default function tokenize(input: string): Token[] {
+export function tokenize(input: string): Token[] {
     return produceTokens({
         input,
         ...readCharacter(input, 0),

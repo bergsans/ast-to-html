@@ -1,7 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 
-import { Token } from '../typings';
-import tokenize from './html-to-ast-tokenize';
+import { Token, tokenize } from '../src';
 
 type ExpectedValue = Token[];
 

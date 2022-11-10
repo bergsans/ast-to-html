@@ -1,8 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 
-import { Token, HTMLNode } from '../typings';
-import tokenize from './html-to-ast-tokenize';
-import parse from './html-to-ast-parse';
+import { Token, HTMLNode, tokenize, parse } from '../src';
 
 type Description = string;
 
