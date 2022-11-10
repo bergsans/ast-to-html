@@ -1,6 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import astToHtml from '../src/ast-to-html/ast-to-html';
-import { HTMLNode } from '../src/typings';
+import { HTMLNode, astToHTML } from '../src';
 
 type ExpectedValue = string;
 
@@ -115,6 +114,6 @@ describe('From AST-tree to html', () => {
         ],
     ];
     for (const [description, testCase, expectedResult] of testCases) {
-        test(description, () => expect(astToHtml(testCase)).toEqual(expectedResult));
+        test(description, () => expect(astToHTML(testCase)).toEqual(expectedResult));
     }
 });

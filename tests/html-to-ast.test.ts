@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 
-import { Token, HTMLNode, htmlToAST } from '../src';
+import { HTMLNode, htmlToAST } from '../src';
 
 type Description = string;
 
