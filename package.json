@@ -1,8 +1,8 @@
 {
     "name": "html-2-ast-2-html",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "html to ast and ast to html",
-    "main": "index.js",
+    "main": "./lib/index.js",
     "files": [
         "lib/**/*"
     ],
