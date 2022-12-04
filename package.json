@@ -1,6 +1,6 @@
 {
     "name": "html-2-ast-2-html",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "html to ast and ast to html",
     "main": "index.js",
     "files": [
@@ -12,6 +12,7 @@
     },
     "keywords": [],
     "author": "Claes-Magnus Berg <claes-magnus@bergsans.se>",
+    "typings": "./lib/index.d.ts",
     "license": "ISC",
     "dependencies": {
         "@jest/globals": "^29.2.2",
